@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="198.0" y="378.0">za.ac.cput.MichaelJansen.Domain.Chef</node>
+    <node x="354.0" y="378.0">za.ac.cput.MichaelJansen.Domain.Manager</node>
+    <node x="511.0" y="356.0">za.ac.cput.MichaelJansen.Domain.Order</node>
+    <node x="109.35606060606062" y="0.0">za.ac.cput.MichaelJansen.Domain.Shift</node>
+    <node x="575.0454545454545" y="145.0">za.ac.cput.MichaelJansen.Domain.MenuItem</node>
+    <node x="268.3560606060606" y="11.0">za.ac.cput.MichaelJansen.Domain.Salary</node>
+    <node x="54.0" y="501.0">za.ac.cput.MichaelJansen.Domain.Sale</node>
+    <node x="186.0" y="156.0">za.ac.cput.MichaelJansen.Domain.Employee</node>
+    <node x="651.0" y="378.0">za.ac.cput.MichaelJansen.Domain.Menu</node>
+    <node x="531.0" y="501.0">za.ac.cput.MichaelJansen.Domain.Table</node>
+    <node x="0.0" y="367.0">za.ac.cput.MichaelJansen.Domain.Waiter</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Table" target="za.ac.cput.MichaelJansen.Domain.Order">
+      <point x="0.0" y="-58.5" />
+      <point x="30.0" y="47.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Sale" target="za.ac.cput.MichaelJansen.Domain.Order">
+      <point x="35.0" y="-58.5" />
+      <point x="159.0" y="476.0" />
+      <point x="541.0" y="476.0" />
+      <point x="-30.0" y="47.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Employee" target="za.ac.cput.MichaelJansen.Domain.Shift">
+      <point x="-39.999999999999986" y="-69.5" />
+      <point x="226.0" y="120.0" />
+      <point x="178.85606060606062" y="120.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Sale" target="za.ac.cput.MichaelJansen.Domain.Waiter">
+      <point x="-35.0" y="-58.5" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Employee" target="za.ac.cput.MichaelJansen.Domain.Salary">
+      <point x="40.000000000000014" y="-69.5" />
+      <point x="306.0" y="120.0" />
+      <point x="347.3560606060606" y="120.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Waiter" target="za.ac.cput.MichaelJansen.Domain.Employee">
+      <point x="0.0" y="-36.5" />
+      <point x="89.0" y="331.0" />
+      <point x="212.66666666666666" y="331.0" />
+      <point x="-53.333333333333336" y="69.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Order" target="za.ac.cput.MichaelJansen.Domain.MenuItem">
+      <point x="0.0" y="-47.5" />
+      <point x="571.0" y="331.0" />
+      <point x="620.0454545454545" y="331.0" />
+      <point x="-45.0" y="80.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Manager" target="za.ac.cput.MichaelJansen.Domain.Employee">
+      <point x="0.0" y="-25.5" />
+      <point x="422.5" y="331.0" />
+      <point x="319.3333333333333" y="331.0" />
+      <point x="53.33333333333333" y="69.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Chef" target="za.ac.cput.MichaelJansen.Domain.Employee">
+      <point x="1.4210854715202004E-14" y="-25.5" />
+      <point x="0.0" y="69.5" />
+    </edge>
+    <edge source="za.ac.cput.MichaelJansen.Domain.Menu" target="za.ac.cput.MichaelJansen.Domain.MenuItem">
+      <point x="0.0" y="-25.5" />
+      <point x="753.5" y="331.0" />
+      <point x="710.0454545454545" y="331.0" />
+      <point x="45.0" y="80.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="480.1666666666666" y="356.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
