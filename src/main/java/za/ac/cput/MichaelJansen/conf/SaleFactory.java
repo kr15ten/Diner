@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Michael on 07/09/2015.
  */
 public class SaleFactory {
-    public static Sale createSale(List<Order> items,Waiter waiter,float tip)
+    public static Sale createSale(List<Order> items,int waiterId,float tip)
     {
-        Sale sale = new Sale.Builder(waiter,items,tip)
+        Sale sale = new Sale.Builder(waiterId,items,tip)
                 .build();
         return sale;
     }

@@ -30,8 +30,6 @@ public class TestTable
 
     Table table;
 
-    private int tableId;
-
     private int seats;
     private List<Order> orders;
     private Boolean available;
@@ -56,7 +54,6 @@ public class TestTable
 
         order = new Order.Builder(items,extras).build();
 
-        tableId = 305;
         seats = 6;
 
         orders = new ArrayList<Order>();
@@ -68,7 +65,7 @@ public class TestTable
     @Test
     public void testTableCreation() throws Exception
     {
-        table = new Table.Builder(id,seats,orders,available).build();
+        table = new Table.Builder(seats,orders,available).build();
         Assert.assertNotNull(table);
         Assert.assertEquals(6,table.getSeats());
         Assert.assertEquals("extra hot sauce",table.getOrders().get(0).getExtra());

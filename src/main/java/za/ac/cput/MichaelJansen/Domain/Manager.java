@@ -1,8 +1,6 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,20 +10,27 @@ import java.util.List;
 @Entity
 public class Manager implements Serializable
 {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
     private String surname;
     private Salary salary;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "managerShifts")
     private List<Shift> shifts;
     private String password;
+
+    protected Manager(){}
 
     public Manager(Builder builder){
         this.name = builder.name;
         this.surname = builder.surname;
         this.salary = builder.salary;
         this.password = builder.password;
+        this.shifts = builder.shifts;
     }
 
     public static class Builder{

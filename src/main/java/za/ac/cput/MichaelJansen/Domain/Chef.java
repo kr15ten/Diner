@@ -1,8 +1,6 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,13 +12,17 @@ import java.util.List;
 public class Chef implements Serializable
 {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected int id;
+    private int id;
 
-    protected String name;
-    protected String surname;
-    protected Salary salary;
-    protected List<Shift> shifts;
+    private String name;
+    private String surname;
+    private Salary salary;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "chefShifts")
+    private List<Shift> shifts;
     private String speciality;
 
     public Chef(Builder builder){
@@ -29,6 +31,9 @@ public class Chef implements Serializable
         this.shifts = builder.shifts;
         this.salary = builder.salary;
         this.speciality = builder.speciality;
+    }
+
+    protected Chef() {
     }
 
     public static class Builder {

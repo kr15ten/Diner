@@ -1,7 +1,6 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 /**
@@ -9,39 +8,43 @@ import java.util.List;
  */
 @Entity
 public class Sale implements Serializable {
-    @GeneratedValue
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private List<Order> items;
-    private Waiter waiter;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tableOrders")
+    private List<Order> orders;
+    private int waiterId;
     private float tip;
 
     public Sale(Builder builder){
-        this.waiter = builder.waiter;
-        this.items = builder.items;
+        this.waiterId = builder.waiterId;
+        this.orders = builder.orders;
         this.tip = builder.tip;
     }
 
-    private Sale(){}
+    protected Sale(){}
 
     public static class Builder {
-        private List<Order> items;
-        private Waiter waiter;
+        private List<Order> orders;
+        private int waiterId;
         private float tip;
 
-        public Builder(Waiter waiter,List<Order> items,float tip) {
-            this.waiter = waiter;
-            this.items = items;
+        public Builder(int waiterId,List<Order> orders,float tip) {
+            this.waiterId = waiterId;
+            this.orders = orders;
             this.tip = tip;
         }
 
-        public Builder waiter(Waiter waiter) {
-            this.waiter = waiter;
+        public Builder waiter(int waiterId) {
+            this.waiterId = waiterId;
             return this;
         }
 
-        public Builder items(List<Order> items) {
-            this.items = items;
+        public Builder orders(List<Order> orders) {
+            this.orders = orders;
             return this;
         }
 
@@ -51,8 +54,8 @@ public class Sale implements Serializable {
         }
 
         public Builder copy(Sale sale) {
-            this.waiter = sale.waiter;
-            this.items = sale.items;
+            this.waiterId = sale.waiterId;
+            this.orders = sale.orders;
             this.tip = sale.tip;
             return this;
         }
@@ -66,8 +69,8 @@ public class Sale implements Serializable {
         return id;
     }
 
-    public List<Order> getItems() {
-        return items;
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public float getTip() {

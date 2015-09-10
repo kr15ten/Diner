@@ -47,8 +47,7 @@ public class TestWaiter {
         shifts = new ArrayList<Shift>();
         shifts.add(shift);
 
-        tables = new ArrayList<Integer>();
-        tables.add(1);
+
 
         tip = 1500.00f;
     }
@@ -56,7 +55,7 @@ public class TestWaiter {
     @Test
     public void testWaiterCreation() throws Exception
     {
-        waiter = new Waiter.Builder(name,surname,salary).shifts(shifts).tables(tables).build();
+        waiter = new Waiter.Builder(name,surname,salary).shifts(shifts).build();
         Assert.assertNotNull(waiter);
         Assert.assertEquals(new Time(8,30,00),waiter.getShifts().get(0).getStartTime());
     }

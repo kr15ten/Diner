@@ -17,10 +17,10 @@ public class TestManager
 {
     Manager manager;
 
-    private String name;
-    private String surname;
-    private Salary salary;
-    private List<Shift> shifts;
+    String name;
+    String surname;
+    Salary salary;
+    List<Shift> shifts;
 
     private String password = "Noodlez";
 

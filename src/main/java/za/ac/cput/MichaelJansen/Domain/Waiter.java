@@ -1,8 +1,6 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,22 +10,27 @@ import java.util.List;
 @Entity
 public class Waiter implements Serializable
 {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String name;
     private String surname;
     private Salary salary;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "waiterShifts")
     private List<Shift> shifts;
-    private List<Integer> tables;
+
     private float tip;
+
+    protected Waiter(){}
 
     public Waiter(Builder builder){
         this.name = builder.name;
         this.surname = builder.surname;
         this.shifts = builder.shifts;
         this.salary = builder.salary;
-        this.tables = builder.tables;
+        //this.tables = builder.tables;
         this.tip = builder.tip;
     }
 
@@ -36,7 +39,7 @@ public class Waiter implements Serializable
         private String surname;
         private Salary salary;
         private List<Shift> shifts;
-        private List<Integer> tables;
+        //private List<Integer> tables;
         private float tip;
 
         public Builder(String name,String surname,Salary salary){
@@ -65,10 +68,10 @@ public class Waiter implements Serializable
             return this;
         }
 
-        public Builder tables(List<Integer> tables){
+        /*public Builder tables(List<Integer> tables){
             this.tables = tables;
             return this;
-        }
+        }*/
 
         public Builder tip(float tip){
             this.tip = tip;
@@ -80,7 +83,7 @@ public class Waiter implements Serializable
             this.surname = waiter.surname;
             this.shifts = waiter.shifts;
             this.salary = waiter.salary;
-            this.tables = waiter.tables;
+           // this.tables = waiter.tables;
             this.tip = waiter.tip;
             return this;
         }
@@ -91,9 +94,9 @@ public class Waiter implements Serializable
 
     }
 
-    public List<Integer> getTables() {
+    /*public List<Integer> getTables() {
         return tables;
-    }
+    }*/
 
     public float getTip() {
         return tip;

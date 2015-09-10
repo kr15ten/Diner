@@ -1,6 +1,7 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Embeddable;
+import org.hibernate.annotations.GeneratorType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
@@ -8,12 +9,17 @@ import java.util.Date;
 /**
  * Created by Michael on 01/09/2015.
  */
-@Embeddable
+@Entity
 public class Shift implements Serializable
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id;
     Date day;
     Time startTime;
     Time endTime;
+
+    public Shift(){}
 
     public Shift(Builder builder) {
         this.day = builder.day;
@@ -26,7 +32,7 @@ public class Shift implements Serializable
         Time startTime;
         Time endTime;
 
-        public Builder(Date day,Time startTime,Time endTime) {
+        public Builder(Date day, Time startTime, Time endTime) {
             this.day = day;
             this.startTime = startTime;
             this.endTime = endTime;
@@ -42,6 +48,11 @@ public class Shift implements Serializable
             return this;
         }
 
+        public Builder day(Date day)
+        {
+            this.day=day;
+            return this;
+        }
         public Builder copy(Shift shift) {
             this.day = shift.day;
             this.startTime = shift.startTime;

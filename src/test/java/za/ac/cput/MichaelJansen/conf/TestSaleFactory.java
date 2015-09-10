@@ -28,8 +28,8 @@ public class TestSaleFactory {
     private String extras;
 
     Sale sale;
-    private List<Order> orderItems;
-    private Waiter waiter;
+    private List<Order> orders;
+    private int waiterId;
     private float tip;
 
     private String name;
@@ -53,23 +53,23 @@ public class TestSaleFactory {
 
         order = new Order.Builder(items,extras).build();
 
-        orderItems = new ArrayList<Order>();
-        orderItems.add(order);
+        orders = new ArrayList<Order>();
+        orders.add(order);
 
         name = "Craeton";
         surname = "Lavish";
         salary = new Salary.Builder(1500.00f).build();
 
-        waiter = new Waiter.Builder(name,surname,salary).build();
+        waiterId = 1;
 
     }
 
     @Test
     public void testSaleCreation() throws Exception
     {
-        sale = SaleFactory.createSale(orderItems,waiter,tip);
+        sale = SaleFactory.createSale(orders,waiterId,tip);
         Assert.assertNotNull(sale);
-        Assert.assertEquals("extra hot sauce",sale.getItems().get(0).getExtra());
+        Assert.assertEquals("extra hot sauce",sale.getOrders().get(0).getExtra());
     }
 
 

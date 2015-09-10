@@ -68,7 +68,7 @@ public class TestTableFactory {
     @Test
     public void testTableCreation() throws Exception
     {
-        table = TableFactory.createTable(id,seats,orders,available);
+        table = TableFactory.createTable(seats,orders,available);
         Assert.assertNotNull(table);
         Assert.assertEquals(6,table.getSeats());
         Assert.assertEquals("extra hot sauce",table.getOrders().get(0).getExtra());

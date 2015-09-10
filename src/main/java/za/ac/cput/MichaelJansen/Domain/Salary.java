@@ -19,6 +19,10 @@ public class Salary implements Serializable
         this.deductions = builder.deductions;
         this.tips = builder.tips;
     }
+
+    protected Salary() {
+    }
+
     public static class Builder {
 
         private float basicSalary;

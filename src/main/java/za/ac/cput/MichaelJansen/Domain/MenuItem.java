@@ -1,15 +1,14 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Created by Michael on 01/09/2015.
  */
-@Embeddable
+
+@Entity
 public class MenuItem implements Serializable
 {
     @Id
@@ -20,6 +19,8 @@ public class MenuItem implements Serializable
     private String description;
     private float price;
     private String extras;
+
+    protected MenuItem(){}
 
     public MenuItem(Builder builder)
     {

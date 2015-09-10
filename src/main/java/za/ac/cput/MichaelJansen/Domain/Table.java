@@ -2,8 +2,7 @@ package za.ac.cput.MichaelJansen.Domain;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,37 +10,37 @@ import java.util.List;
  * Created by Michael on 01/09/2015.
  */
 @Entity
+@javax.persistence.Table(name = "Table")
 public class Table implements Serializable {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int tableId;
 
     private int seats;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_orders")
     private List<Order> orders;
     private Boolean available;
 
     public Table(Builder builder){
-        this.id = builder.id;
         this.seats = builder.seats;
         this.orders = builder.orders;
         this.available = builder.available;
     }
 
+    protected Table() {
+    }
+
     public static class Builder {
-        private int id;
         private int seats;
         private List<Order> orders;
         private Boolean available;
 
-        public Builder(int id,int seats,List<Order> orders,Boolean available){
-            this.id = id;
+        public Builder(int seats,List<Order> orders,Boolean available){
             this.seats = seats;
             this.orders = orders;
             this.available = available;
-        }
-
-        public Builder id(int id) {
-            this.id = id;
-            return this;
         }
 
         public Builder seats(int seats) {
@@ -60,7 +59,6 @@ public class Table implements Serializable {
         }
 
         public Builder copy(Table table) {
-            this.id = table.id;
             this.seats = table.seats;
             this.orders = table.orders;
             this.available = table.available;
@@ -74,7 +72,7 @@ public class Table implements Serializable {
 
 
     public int getId() {
-        return id;
+        return tableId;
     }
 
     public int getSeats() {

@@ -60,7 +60,7 @@ public class TestWaiterFactory {
     @Test
     public void testWaiterCreation() throws Exception
     {
-        waiter = WaiterFactory.createWaiter(name,surname,salary,shifts,tables,tip);
+        waiter = WaiterFactory.createWaiter(name,surname,salary,shifts,tip);
         Assert.assertNotNull(waiter);
         Assert.assertEquals(new Time(8,30,00),waiter.getShifts().get(0).getStartTime());
     }

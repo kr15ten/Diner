@@ -1,8 +1,6 @@
 package za.ac.cput.MichaelJansen.Domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +8,20 @@ import java.util.List;
 /**
  * Created by Michael on 01/09/2015.
  */
-@Embeddable
+@Entity
 public class Order implements Serializable
 {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderId;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "orderedItems")
     private List<MenuItem> items;
     private String extra;
+
+    protected Order(){}
 
     public Order(Builder builder){
         this.items = builder.items;
@@ -53,6 +56,10 @@ public class Order implements Serializable
         public Order build() {
             return new Order(this);
         }
+    }
+
+    public int getOrderId() {
+        return orderId;
     }
 
     public List<MenuItem> getItems() {
