@@ -24,57 +24,22 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private SaleRepository repository;
-
-    MenuItem menuItem;
-
-    private int id;
-    private String itemName;
-    private String type;
-    private String description;
-    private float price;
-    private String optionalExtras;
-
-    private Order order;
-    private ArrayList<MenuItem> items;
-    private String extras;
+    int id;
 
     Sale sale;
-    private List<Order> orders;
-    private int waiterId;
-    private float tip;
-
-    private String name;
-    private String surname;
-    private Salary salary;
-
+    int waiterId;
+    int tableId;
+    float tip;
 
     @Test
     public void create() throws Exception
     {
 
-        id = 305;
-        itemName = "Harold's hot sauce hamburger";
-        description = "devilishly hot sauce for burgers that will set fire to many a mouth";
-        type = "Burgers";
-        price = 30.00f;
-        optionalExtras = "Mayonaisse";
-
-        items = new ArrayList<MenuItem>();
-        items.add(menuItem);
-        extras = "extra hot sauce";
-
-        order = new Order.Builder(items,extras).build();
-
-        orders = new ArrayList<Order>();
-        orders.add(order);
-
-        name = "Craeton";
-        surname = "Lavish";
-        salary = new Salary.Builder(1500.00f).build();
-
         waiterId = 1;
+        tableId = 1;
+        tip = 150.00f;
 
-        sale = SaleFactory.createSale(orders,waiterId,tip);
+        sale = SaleFactory.createSale(tableId,waiterId,tip);
 
         repository.save(sale);
         id = sale.getId();
@@ -93,7 +58,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Sale newSale = SaleFactory.createSale(orders,waiterId,tip);
+        Sale newSale = SaleFactory.createSale(2,waiterId,tip);
 
         repository.save(newSale);
         id = newSale.getId();

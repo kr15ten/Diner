@@ -24,15 +24,7 @@ public class TestWaiterFactory {
     private String name;
     private String surname;
     private Salary salary;
-    private List<Shift> shifts;
-    private List<Integer> tables;
     private float tip;
-
-    Shift shift;
-
-    Date date;
-    Time startTime;
-    Time endTime;
 
     @Before
     public void setUp() throws Exception
@@ -41,28 +33,15 @@ public class TestWaiterFactory {
         surname = "Lavish";
         salary = new Salary.Builder(1500.00f).build();
 
-
-        date = new Date(2015,11,11);
-        startTime = new Time(8,30,00);
-        endTime = new Time(15,00,00);
-
-        shift = new Shift.Builder(date,startTime,endTime).build();
-
-        shifts = new ArrayList<Shift>();
-        shifts.add(shift);
-
-        tables = new ArrayList<Integer>();
-        tables.add(1);
-
         tip = 1500.00f;
     }
 
     @Test
     public void testWaiterCreation() throws Exception
     {
-        waiter = WaiterFactory.createWaiter(name,surname,salary,shifts,tip);
+        waiter = WaiterFactory.createWaiter(name,surname,salary,tip);
         Assert.assertNotNull(waiter);
-        Assert.assertEquals(new Time(8,30,00),waiter.getShifts().get(0).getStartTime());
+        Assert.assertEquals(1500.00f,waiter.getTip(),0.001);
     }
 
     @After

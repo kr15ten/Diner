@@ -18,14 +18,15 @@ public class TestShift
     Date date;
     Time startTime;
     Time endTime;
+    String empId;
 
     @Before
     public void setUp() throws Exception{
         date = new Date(2015,11,11);
         startTime = new Time(8,30,00);
         endTime = new Time(15,00,00);
-
-        shift = new Shift.Builder(date,startTime,endTime).build();
+        empId = "W1";
+        shift = new Shift.Builder(date,startTime,endTime,empId).build();
     }
 
     @Test

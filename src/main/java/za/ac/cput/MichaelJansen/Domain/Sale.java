@@ -13,28 +13,26 @@ public class Sale implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "tableOrders")
-    private List<Order> orders;
+    private int tableId;
     private int waiterId;
     private float tip;
 
     public Sale(Builder builder){
         this.waiterId = builder.waiterId;
-        this.orders = builder.orders;
+        this.tableId = builder.tableId;
         this.tip = builder.tip;
     }
 
     protected Sale(){}
 
     public static class Builder {
-        private List<Order> orders;
+        private int tableId;
         private int waiterId;
         private float tip;
 
-        public Builder(int waiterId,List<Order> orders,float tip) {
+        public Builder(int waiterId,int tableId,float tip) {
             this.waiterId = waiterId;
-            this.orders = orders;
+            this.tableId = tableId;
             this.tip = tip;
         }
 
@@ -43,8 +41,8 @@ public class Sale implements Serializable {
             return this;
         }
 
-        public Builder orders(List<Order> orders) {
-            this.orders = orders;
+        public Builder tableId(int tableId) {
+            this.tableId = tableId;
             return this;
         }
 
@@ -55,7 +53,7 @@ public class Sale implements Serializable {
 
         public Builder copy(Sale sale) {
             this.waiterId = sale.waiterId;
-            this.orders = sale.orders;
+            this.tableId = sale.tableId;
             this.tip = sale.tip;
             return this;
         }
@@ -69,8 +67,10 @@ public class Sale implements Serializable {
         return id;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public int getWaiterId() { return waiterId; }
+
+    public int getTableId() {
+        return tableId;
     }
 
     public float getTip() {

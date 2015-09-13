@@ -7,7 +7,6 @@ import java.io.Serializable;
 /**
  * Created by Michael on 01/09/2015.
  */
-
 @Entity
 public class MenuItem implements Serializable
 {

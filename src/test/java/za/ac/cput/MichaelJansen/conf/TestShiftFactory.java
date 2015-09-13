@@ -18,19 +18,19 @@ public class TestShiftFactory {
     Date date;
     Time startTime;
     Time endTime;
-
+    String empId;
     @Before
     public void setUp() throws Exception{
         date = new Date(2015,11,11);
         startTime = new Time(8,30,00);
         endTime = new Time(15,00,00);
-
+        empId = "W1";
 
     }
 
     @Test
     public void testShiftCreation() throws Exception{
-        shift = ShiftFactory.createShift(date,startTime,endTime);
+        shift = ShiftFactory.createShift(date,startTime,endTime,empId);
         Assert.assertNotNull(shift);
         Assert.assertEquals(startTime,shift.getStartTime());
     }

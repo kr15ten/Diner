@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import za.ac.cput.MichaelJansen.Domain.MenuItem;
 import za.ac.cput.MichaelJansen.Domain.Order;
+import za.ac.cput.MichaelJansen.Domain.SalesItem;
 import za.ac.cput.MichaelJansen.Domain.Table;
 
 import java.util.ArrayList;
@@ -15,22 +16,17 @@ import java.util.List;
  * Created by Michael on 07/09/2015.
  */
 public class TestTableFactory {
-    MenuItem menuItem;
+    SalesItem salesItem;
 
-    private int id;
-    private String itemName;
-    private String type;
-    private String description;
-    private float price;
-    private String optionalExtras;
+    private int menuItemId;
+    private int tableId;
+    private String extra;
 
     private Order order;
-    private ArrayList<MenuItem> items;
+    private ArrayList<SalesItem> items;
     private String extras;
 
     Table table;
-
-    private int tableId;
 
     private int seats;
     private List<Order> orders;
@@ -41,22 +37,19 @@ public class TestTableFactory {
     @Before
     public void setUp() throws Exception
     {
-        id = 305;
-        itemName = "Harold's hot sauce hamburger";
-        description = "devilishly hot sauce for burgers that will set fire to many a mouth";
-        type = "Burgers";
-        price = 30.00f;
-        optionalExtras = "Mayonaisse";
+        menuItemId = 305;
+        tableId = 3;
+        extra = "Extra cheese";
 
-        menuItem = new MenuItem.Builder(id,itemName,type,description,price).build();
+        salesItem = SalesItemFactory.createSalesItem(menuItemId, tableId, extra);
 
-        items = new ArrayList<MenuItem>();
-        items.add(menuItem);
+        items = new ArrayList<SalesItem>();
+        items.add(salesItem);
+
         extras = "extra hot sauce";
 
-        order = new Order.Builder(items,extras).build();
+        order = OrderFactory.createOrder(items, extras);
 
-        tableId = 305;
         seats = 6;
 
         orders = new ArrayList<Order>();

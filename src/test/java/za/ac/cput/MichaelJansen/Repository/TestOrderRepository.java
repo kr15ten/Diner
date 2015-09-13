@@ -4,30 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.MichaelJansen.App;
-import za.ac.cput.MichaelJansen.Domain.*;
-import za.ac.cput.MichaelJansen.conf.*;
+import za.ac.cput.MichaelJansen.Domain.Order;
+import za.ac.cput.MichaelJansen.Domain.SalesItem;
+import za.ac.cput.MichaelJansen.conf.OrderFactory;
+import za.ac.cput.MichaelJansen.conf.SalesItemFactory;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Michael on 08/09/2015.
+ * Created by Michael on 13/09/2015.
  */
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestTableRepository extends AbstractTestNGSpringContextTests {
+public class TestOrderRepository extends AbstractTestNGSpringContextTests {
 
     int id;
 
     @Autowired
-    private TableRepository repository;
+    private OrderRepository repository;
 
     SalesItem salesItem;
 
@@ -38,12 +37,6 @@ public class TestTableRepository extends AbstractTestNGSpringContextTests {
     private Order order;
     private ArrayList<SalesItem> items;
     private String extras;
-
-    Table table;
-
-    private int seats;
-    private List<Order> orders;
-    private Boolean available;
 
 
     @Test
@@ -61,49 +54,40 @@ public class TestTableRepository extends AbstractTestNGSpringContextTests {
 
         order = OrderFactory.createOrder(items, extras);
 
-        seats = 6;
+        repository.save(order);
+        id = order.getOrderId();
 
-        orders = new ArrayList<Order>();
-        orders.add(order);
-
-        available = true;
-
-        table = new Table.Builder(seats,available).build();
-
-        repository.save(table);
-        id = table.getId();
-
-        Assert.assertNotNull(table.getId());
+        Assert.assertNotNull(order.getOrderId());
     }
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
-        table = repository.findOne(id);
+        order = repository.findOne(id);
 
-        Assert.assertEquals(id, table.getId());
+        Assert.assertEquals(id, order.getOrderId());
     }
 
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Table newTable = new Table.Builder(seats,false).build();
+        order = new Order.Builder(extra).build();
 
-        repository.save(newTable);
-        id = newTable.getId();
-        Table updatedTable = repository.findOne(id);
+        repository.save(order);
+        id = order.getOrderId();
+        order = repository.findOne(id);
 
-        Assert.assertEquals(id, updatedTable.getId());
+        Assert.assertEquals(id,order.getOrderId());
     }
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
-        table = repository.findOne(id);
-        repository.delete(table);
-        Table newerTable = repository.findOne(id);
-        Assert.assertNull(newerTable);
+        order = repository.findOne(id);
+        repository.delete(order);
+        order = repository.findOne(id);
+        Assert.assertNull(order);
     }
 
     @AfterClass
@@ -113,3 +97,4 @@ public class TestTableRepository extends AbstractTestNGSpringContextTests {
     }
 
 }
+

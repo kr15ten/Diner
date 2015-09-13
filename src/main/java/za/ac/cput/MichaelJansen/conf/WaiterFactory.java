@@ -10,10 +10,10 @@ import java.util.List;
  * Created by Michael on 07/09/2015.
  */
 public class WaiterFactory {
-    public static Waiter createWaiter(String name,String surname,Salary salary,List<Shift>shifts,float tip)
+    public static Waiter createWaiter(String name,String surname,Salary salary,float tip)
     {
         Waiter waiter = new Waiter
-                .Builder(name, surname, salary).shifts(shifts).tip(tip).build();
+                .Builder(name, surname, salary).tip(tip).build();
         return waiter;
     }
 }

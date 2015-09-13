@@ -18,6 +18,7 @@ public class Shift implements Serializable
     Date day;
     Time startTime;
     Time endTime;
+    String empId;
 
     public Shift(){}
 
@@ -25,17 +26,20 @@ public class Shift implements Serializable
         this.day = builder.day;
         this.startTime = builder.startTime;
         this.endTime = builder.endTime;
+        this.empId = builder.empId;
     }
 
     public static class Builder {
         Date day;
         Time startTime;
         Time endTime;
+        String empId;
 
-        public Builder(Date day, Time startTime, Time endTime) {
+        public Builder(Date day, Time startTime, Time endTime,String empId) {
             this.day = day;
             this.startTime = startTime;
             this.endTime = endTime;
+            this.empId = empId;
         }
 
         public Builder startTime(Time startTime) {
@@ -53,10 +57,17 @@ public class Shift implements Serializable
             this.day=day;
             return this;
         }
+
+        public Builder empId(String empId){
+            this.empId = empId;
+            return this;
+        }
+
         public Builder copy(Shift shift) {
             this.day = shift.day;
             this.startTime = shift.startTime;
             this.endTime = shift.endTime;
+            this.empId = shift.empId;
             return this;
         }
 
@@ -76,4 +87,8 @@ public class Shift implements Serializable
     public Time getEndTime() {
         return endTime;
     }
+
+    public String getEmpId(){return empId;}
+
+    public int getId() { return id; }
 }

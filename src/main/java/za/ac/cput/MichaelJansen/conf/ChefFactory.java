@@ -10,8 +10,8 @@ import java.util.List;
  * Created by Michael on 07/09/2015.
  */
 public class ChefFactory {
-    public static Chef createChef(String name, String surname, Salary salary,List<Shift> shifts,String speciality){
-        Chef chef = new Chef.Builder(name,surname,salary).shifts(shifts).speciality(speciality).build();
+    public static Chef createChef(String name, String surname, Salary salary,String speciality){
+        Chef chef = new Chef.Builder(name,surname,salary).speciality(speciality).build();
         return chef;
     }
 }

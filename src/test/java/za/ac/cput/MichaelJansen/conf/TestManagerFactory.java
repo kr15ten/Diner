@@ -22,15 +22,7 @@ public class TestManagerFactory {
     private String name;
     private String surname;
     private Salary salary;
-    private List<Shift> shifts;
-
     private String password = "Noodlez";
-
-    Shift shift;
-
-    Date date;
-    Time startTime;
-    Time endTime;
 
     @Before
     public void setUp() throws Exception
@@ -39,22 +31,12 @@ public class TestManagerFactory {
         surname = "Lavish";
         salary = new Salary.Builder(1500.00f).build();
         password = "Noodles";
-
-        date = new Date(2015,11,11);
-        startTime = new Time(8,30,00);
-        endTime = new Time(15,00,00);
-
-        shift = new Shift.Builder(date,startTime,endTime).build();
-
-        shifts = new ArrayList<Shift>();
-        shifts.add(shift);
-
     }
 
     @Test
     public void testManagerCreation() throws Exception
     {
-        manager = ManagerFactory.createManager(name,surname,salary,shifts,password);
+        manager = ManagerFactory.createManager(name,surname,salary,password);
         Assert.assertNotNull(manager);
         Assert.assertEquals("Noodles",manager.getPassword());
     }

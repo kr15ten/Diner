@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import za.ac.cput.MichaelJansen.conf.OrderFactory;
+import za.ac.cput.MichaelJansen.conf.SalesItemFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +17,16 @@ public class TestTable
 {
 
 
-    MenuItem menuItem;
+    SalesItem salesItem;
 
-    private int id;
-    private String itemName;
-    private String type;
-    private String description;
-    private float price;
-    private String optionalExtras;
+    private int menuItemId;
+    private int tableId;
+    private String extra;
 
     private Order order;
-    private ArrayList<MenuItem> items;
+    private ArrayList<SalesItem> items;
     private String extras;
+
 
     Table table;
 
@@ -39,20 +39,17 @@ public class TestTable
     @Before
     public void setUp() throws Exception
     {
-        id = 305;
-        itemName = "Harold's hot sauce hamburger";
-        description = "devilishly hot sauce for burgers that will set fire to many a mouth";
-        type = "Burgers";
-        price = 30.00f;
-        optionalExtras = "Mayonaisse";
+        menuItemId = 305;
+        tableId = 3;
+        extra = "Extra cheese";
 
-        menuItem = new MenuItem.Builder(id,itemName,type,description,price).build();
+        salesItem = SalesItemFactory.createSalesItem(menuItemId, tableId, extra);
 
-        items = new ArrayList<MenuItem>();
-        items.add(menuItem);
+        items = new ArrayList<SalesItem>();
+        items.add(salesItem);
         extras = "extra hot sauce";
 
-        order = new Order.Builder(items,extras).build();
+        order = OrderFactory.createOrder(items, extras);
 
         seats = 6;
 

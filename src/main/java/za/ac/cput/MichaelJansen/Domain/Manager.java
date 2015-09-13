@@ -7,10 +7,13 @@ import java.util.List;
 /**
  * Created by Michael on 01/09/2015.
  */
+@SequenceGenerator(initialValue = 1,allocationSize = 100,name = "manSeq")
 @Entity
 public class Manager implements Serializable
 {
+
     @Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "manSeq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -18,9 +21,7 @@ public class Manager implements Serializable
     private String surname;
     private Salary salary;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "managerShifts")
-    private List<Shift> shifts;
+
     private String password;
 
     protected Manager(){}
@@ -30,14 +31,12 @@ public class Manager implements Serializable
         this.surname = builder.surname;
         this.salary = builder.salary;
         this.password = builder.password;
-        this.shifts = builder.shifts;
     }
 
     public static class Builder{
         private String name;
         private String surname;
         private Salary salary;
-        private List<Shift> shifts;
         private String password;
 
 
@@ -58,22 +57,14 @@ public class Manager implements Serializable
             return this;
         }
 
-        public Builder shifts(List<Shift> shifts){
-            this.shifts = shifts;
-            return this;
-        }
-
         public Builder salary(Salary salary){
             this.salary = salary;
             return this;
         }
 
-
-
         public Builder copy(Manager manager){
             this.name = manager.name;
             this.surname = manager.surname;
-            this.shifts = manager.shifts;
             this.salary = manager.salary;
             this.password = manager.password;
             return this;
@@ -87,9 +78,7 @@ public class Manager implements Serializable
 
     public String getPassword() { return password; }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public String getName() {
         return name;
@@ -103,7 +92,5 @@ public class Manager implements Serializable
         return salary;
     }
 
-    public List<Shift> getShifts() {
-        return shifts;
-    }
+    public String getType(){return "M";}
 }

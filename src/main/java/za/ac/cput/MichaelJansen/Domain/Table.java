@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Michael on 01/09/2015.
  */
 @Entity
-@javax.persistence.Table(name = "Table")
+@javax.persistence.Table(name = "Tables")
 public class Table implements Serializable {
 
     @Id
@@ -18,6 +18,7 @@ public class Table implements Serializable {
     private int tableId;
 
     private int seats;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_orders")
     private List<Order> orders;
@@ -40,6 +41,11 @@ public class Table implements Serializable {
         public Builder(int seats,List<Order> orders,Boolean available){
             this.seats = seats;
             this.orders = orders;
+            this.available = available;
+        }
+
+        public Builder(int seats,Boolean available){
+            this.seats = seats;
             this.available = available;
         }
 

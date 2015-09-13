@@ -7,19 +7,17 @@ import java.util.List;
 /**
  * Created by Michael on 01/09/2015.
  */
+@SequenceGenerator(initialValue = 1,allocationSize = 100,name = "waitSeq")
 @Entity
 public class Waiter implements Serializable
 {
     @Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "waitSeq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String name;
     private String surname;
     private Salary salary;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "waiterShifts")
-    private List<Shift> shifts;
 
     private float tip;
 
@@ -28,9 +26,7 @@ public class Waiter implements Serializable
     public Waiter(Builder builder){
         this.name = builder.name;
         this.surname = builder.surname;
-        this.shifts = builder.shifts;
         this.salary = builder.salary;
-        //this.tables = builder.tables;
         this.tip = builder.tip;
     }
 
@@ -38,8 +34,6 @@ public class Waiter implements Serializable
         private String name;
         private String surname;
         private Salary salary;
-        private List<Shift> shifts;
-        //private List<Integer> tables;
         private float tip;
 
         public Builder(String name,String surname,Salary salary){
@@ -58,20 +52,10 @@ public class Waiter implements Serializable
             return this;
         }
 
-        public Builder shifts(List<Shift> shifts){
-            this.shifts = shifts;
-            return this;
-        }
-
         public Builder salary(Salary salary){
             this.salary = salary;
             return this;
         }
-
-        /*public Builder tables(List<Integer> tables){
-            this.tables = tables;
-            return this;
-        }*/
 
         public Builder tip(float tip){
             this.tip = tip;
@@ -81,9 +65,7 @@ public class Waiter implements Serializable
         public Builder copy(Waiter waiter){
             this.name = waiter.name;
             this.surname = waiter.surname;
-            this.shifts = waiter.shifts;
             this.salary = waiter.salary;
-           // this.tables = waiter.tables;
             this.tip = waiter.tip;
             return this;
         }
@@ -93,10 +75,6 @@ public class Waiter implements Serializable
         }
 
     }
-
-    /*public List<Integer> getTables() {
-        return tables;
-    }*/
 
     public float getTip() {
         return tip;
@@ -114,11 +92,7 @@ public class Waiter implements Serializable
         return surname;
     }
 
-    public Salary getSalary() {
-        return salary;
-    }
+    public Salary getSalary() { return salary; }
 
-    public List<Shift> getShifts() {
-        return shifts;
-    }
+    public String getType() {return "C";}
 }

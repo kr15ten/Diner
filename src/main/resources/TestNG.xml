@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="example suite 1" verbose="1" >
+    <test name="Regression suite 1" >
+        <classes>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestChefRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestSaleRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestShiftRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestManagerRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestMenuItemRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestMenuRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestOrderRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestSalesItemRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestTableRepository"/>
+            <class name="za.ac.cput.MichaelJansen.Repository.TestWaiterRepository"/>
+        </classes>
+    </test>
+</suite>

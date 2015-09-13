@@ -8,11 +8,13 @@ import java.util.List;
  * Created by Michael on 01/09/2015.
  */
 
+@SequenceGenerator(initialValue = 1,allocationSize = 100,name = "chefSeq")
 @Entity
 public class Chef implements Serializable
 {
 
     @Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "chefSeq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -20,15 +22,11 @@ public class Chef implements Serializable
     private String surname;
     private Salary salary;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "chefShifts")
-    private List<Shift> shifts;
     private String speciality;
 
     public Chef(Builder builder){
         this.name = builder.name;
         this.surname = builder.surname;
-        this.shifts = builder.shifts;
         this.salary = builder.salary;
         this.speciality = builder.speciality;
     }
@@ -40,7 +38,6 @@ public class Chef implements Serializable
         private String name;
         private String surname;
         private Salary salary;
-        private List<Shift> shifts;
         private String speciality;
 
 
@@ -60,10 +57,6 @@ public class Chef implements Serializable
             return this;
         }
 
-        public Builder shifts(List<Shift> shifts) {
-            this.shifts = shifts;
-            return this;
-        }
 
         public Builder salary(Salary salary) {
             this.salary = salary;
@@ -79,7 +72,6 @@ public class Chef implements Serializable
         public Builder copy(Chef chef) {
             this.name = chef.name;
             this.surname = chef.surname;
-            this.shifts = chef.shifts;
             this.salary = chef.salary;
             this.speciality = chef.speciality;
             return this;
@@ -107,11 +99,9 @@ public class Chef implements Serializable
         return salary;
     }
 
-    public List<Shift> getShifts() {
-        return shifts;
-    }
-
     public String getSpeciality() {
         return speciality;
     }
+
+    public String getType(){return "C";}
 }

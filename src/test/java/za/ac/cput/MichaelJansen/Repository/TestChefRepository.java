@@ -34,15 +34,8 @@ public class TestChefRepository extends AbstractTestNGSpringContextTests {
     String name;
     String surname;
     Salary salary;
-    List<Shift> shifts;
 
     private String speciality = "Noodlez";
-
-    Shift shift;
-
-    Date date;
-    Time startTime;
-    Time endTime;
 
     @Test
     public void create() throws Exception
@@ -52,16 +45,7 @@ public class TestChefRepository extends AbstractTestNGSpringContextTests {
         surname = "Lavish";
         salary = new Salary.Builder(1500.00f).build();
         speciality = "Noodles";
-
-        date = new Date(2014,11,11);
-        startTime = new Time(8,30,00);
-        endTime = new Time(15,00,00);
-
-        shift = new Shift.Builder(date,startTime,endTime).build();
-
-        shifts = new ArrayList<Shift>();
-        shifts.add(shift);
-        chef = ChefFactory.createChef(name,surname,salary,shifts,speciality);
+        chef = ChefFactory.createChef(name,surname,salary,speciality);
         repository.save(chef);
         id = chef.getId();
 
@@ -79,7 +63,7 @@ public class TestChefRepository extends AbstractTestNGSpringContextTests {
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Chef newChef = new Chef.Builder("Layton",surname,salary).speciality(speciality)/*.shifts(shifts)*/.build();
+        Chef newChef = new Chef.Builder("Layton",surname,salary).speciality(speciality).build();
 
         repository.save(newChef);
         id = newChef.getId();
@@ -100,6 +84,6 @@ public class TestChefRepository extends AbstractTestNGSpringContextTests {
     @AfterClass
     public void cleanUp() throws Exception
     {
-        repository.deleteAll();
+       repository.deleteAll();
     }
 }

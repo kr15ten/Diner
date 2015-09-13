@@ -9,9 +9,9 @@ import java.util.Date;
  * Created by Michael on 07/09/2015.
  */
 public class ShiftFactory {
-    public static Shift createShift(Date day, Time startTime, Time endTime)
+    public static Shift createShift(Date day, Time startTime, Time endTime,String empId)
     {
-        Shift shift = new Shift.Builder(day,startTime,endTime)
+        Shift shift = new Shift.Builder(day,startTime,endTime,empId)
                 .build();
         return shift;
     }

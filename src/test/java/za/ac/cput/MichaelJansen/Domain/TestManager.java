@@ -20,15 +20,7 @@ public class TestManager
     String name;
     String surname;
     Salary salary;
-    List<Shift> shifts;
-
-    private String password = "Noodlez";
-
-    Shift shift;
-
-    Date date;
-    Time startTime;
-    Time endTime;
+    String password = "Noodlez";
 
     @Before
     public void setUp() throws Exception
@@ -37,22 +29,12 @@ public class TestManager
         surname = "Lavish";
         salary = new Salary.Builder(1500.00f).build();
         password = "Noodles";
-
-        date = new Date(2015,11,11);
-        startTime = new Time(8,30,00);
-        endTime = new Time(15,00,00);
-
-        shift = new Shift.Builder(date,startTime,endTime).build();
-
-        shifts = new ArrayList<Shift>();
-        shifts.add(shift);
-
     }
 
     @Test
     public void testManagerCreation() throws Exception
     {
-        manager = new Manager.Builder(name,surname,salary,password).shifts(shifts).build();
+        manager = new Manager.Builder(name,surname,salary,password).build();
         Assert.assertNotNull(manager);
         Assert.assertEquals("Noodles",manager.getPassword());
     }
