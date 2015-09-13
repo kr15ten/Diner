@@ -9,7 +9,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         TestChef.class,
         TestManager.class,
-        TestMenu.class,
         TestMenuItem.class,
         TestOrder.class,
         TestSalary.class,

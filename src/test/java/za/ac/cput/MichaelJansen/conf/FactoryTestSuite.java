@@ -9,7 +9,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         TestChefFactory.class,
         TestManagerFactory.class,
-        TestMenuFactory.class,
         TestMenuItemFactory.class,
         TestOrderFactory.class,
         TestSalaryFactory.class,
