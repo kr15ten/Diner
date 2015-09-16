@@ -1,4 +1,4 @@
-package za.ac.cput.MichaelJansen.Repository;
+package za.ac.cput.MichaelJansen.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -8,25 +8,27 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.MichaelJansen.App;
-import za.ac.cput.MichaelJansen.Domain.Order;
 import za.ac.cput.MichaelJansen.Domain.SalesItem;
-import za.ac.cput.MichaelJansen.conf.OrderFactory;
+import za.ac.cput.MichaelJansen.Repository.SalesItemRepository;
 import za.ac.cput.MichaelJansen.conf.SalesItemFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Michael on 13/09/2015.
+ * Created by Michael on 15/09/2015.
  */
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestOrderRepository extends AbstractTestNGSpringContextTests {
+public class TestSalesItemService extends AbstractTestNGSpringContextTests{
+
+    @Autowired
+    SalesItemService service;
 
     int id;
 
     @Autowired
-    private OrderRepository repository;
+    private SalesItemRepository repository;
 
     SalesItem salesItem;
 
@@ -34,12 +36,7 @@ public class TestOrderRepository extends AbstractTestNGSpringContextTests {
     private int tableId;
     private String extra;
 
-    private Order order;
-    private ArrayList<SalesItem> items;
-    private String extras;
-
-    List<Order> orders = new ArrayList<Order>();
-
+    List<SalesItem> salesItems = new ArrayList<SalesItem>();
 
     @Test
     public void create() throws Exception
@@ -50,20 +47,30 @@ public class TestOrderRepository extends AbstractTestNGSpringContextTests {
 
         salesItem = SalesItemFactory.createSalesItem(menuItemId, tableId, extra);
 
-        items = new ArrayList<SalesItem>();
-        items.add(salesItem);
-        extras = "extra hot sauce";
+        repository.save(salesItem);
+        id = salesItem.getId();
 
-        order = OrderFactory.createOrder(items, extras);
+        Assert.assertNotNull(salesItem.getId());
+    }
 
-        repository.save(order);
-        id = order.getOrderId();
+    @Test(dependsOnMethods = "create")
+    public void testGetSalesItems() throws Exception {
+        salesItems = service.getSalesItems();
+        Assert.assertEquals(1, salesItems.size());
+    }
 
-        Assert.assertNotNull(order.getOrderId());
+    @Test(dependsOnMethods = "create")
+    public void testGetSalesItem() throws Exception {
+        salesItem = service.getSalesItem(id);
 
+        Assert.assertEquals(extra,salesItem.getExtra());
+    }
 
+    @AfterClass
+    public void cleanUp() throws Exception
+    {
+        repository.deleteAll();
     }
 
 
 }
-
