@@ -17,6 +17,7 @@ public class ChefResource extends ResourceSupport {
     private String speciality;
 
     public ChefResource(Builder builder){
+        this.id = builder.id;
         this.name = builder.name;
         this.surname = builder.surname;
         this.salary = builder.salary;
@@ -27,16 +28,18 @@ public class ChefResource extends ResourceSupport {
     }
 
     public static class Builder {
+        private int id;
         private String name;
         private String surname;
         private Salary salary;
         private String speciality;
 
 
-        public Builder(String name, String surname, Salary salary) {
+        public Builder(int id,String name, String surname, Salary salary) {
             this.name = name;
             this.surname = surname;
             this.salary = salary;
+            this.id = id;
         }
 
         public Builder name(String name) {
@@ -59,7 +62,6 @@ public class ChefResource extends ResourceSupport {
             this.speciality = speciality;
             return this;
         }
-
 
         public Builder copy(ChefResource chef) {
             this.name = chef.name;

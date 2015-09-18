@@ -94,5 +94,5 @@ public class Waiter implements Serializable
 
     public Salary getSalary() { return salary; }
 
-    public String getType() {return "C";}
+    public String getType() {return "W";}
 }

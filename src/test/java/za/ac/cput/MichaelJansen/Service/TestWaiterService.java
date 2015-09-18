@@ -72,10 +72,10 @@ public class TestWaiterService extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(tip,waiter.getTip());
     }
 
-    @AfterClass
+/*    @AfterClass
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
     }
-
+*/
 }
