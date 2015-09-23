@@ -12,6 +12,7 @@ import za.ac.cput.MichaelJansen.Domain.MenuItem;
 @RestController
 @RequestMapping("/")
 public class LandingPage {
+
     @RequestMapping(method = RequestMethod.GET)
     public MenuItem getMenuItem() {
 
