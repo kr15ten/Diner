@@ -18,8 +18,8 @@ import java.util.List;
 /**
  * Created by Michael on 08/09/2015.
  */
-@SpringApplicationConfiguration(classes = App.class)
-@WebAppConfiguration
+//@SpringApplicationConfiguration(classes = App.class)
+//@WebAppConfiguration
 public class TestSaleRepository extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -31,7 +31,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
     int tableId;
     float tip;
 
-    @Test
+    //@Test
     public void create() throws Exception
     {
 
@@ -47,7 +47,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
         Assert.assertNotNull(sale.getId());
     }
 
-    @Test(dependsOnMethods = "create")
+    //@Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         Sale sale1 = repository.findOne(id);
@@ -55,7 +55,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(id, sale1.getId());
     }
 
-    @Test(dependsOnMethods = "read")
+    //@Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
         Sale newSale = SaleFactory.createSale(2,waiterId,tip);
@@ -67,7 +67,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(id, updatedSale.getId());
     }
 
-    @Test(dependsOnMethods = "update")
+    //@Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
         Sale sale2 = repository.findOne(id);
@@ -76,7 +76,7 @@ public class TestSaleRepository extends AbstractTestNGSpringContextTests {
         Assert.assertNull(newerSale);
     }
 
-    @AfterClass
+    //@AfterClass
     public void cleanUp() throws Exception
     {
         repository.deleteAll();

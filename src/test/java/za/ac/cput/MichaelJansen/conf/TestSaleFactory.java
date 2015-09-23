@@ -19,7 +19,7 @@ public class TestSaleFactory {
     private int waiterId;
     private float tip;
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
 
@@ -29,7 +29,7 @@ public class TestSaleFactory {
 
     }
 
-    @Test
+    //@Test
     public void testSaleCreation() throws Exception
     {
         sale = SaleFactory.createSale(tableId,waiterId,tip);
@@ -38,7 +38,7 @@ public class TestSaleFactory {
     }
 
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

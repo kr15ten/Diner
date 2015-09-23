@@ -22,7 +22,7 @@ public class TestManager
     Salary salary;
     String password = "Noodlez";
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         name = "Craeton";
@@ -31,7 +31,7 @@ public class TestManager
         password = "Noodles";
     }
 
-    @Test
+    //@Test
     public void testManagerCreation() throws Exception
     {
         manager = new Manager.Builder(name,surname,salary,password).build();
@@ -39,7 +39,7 @@ public class TestManager
         Assert.assertEquals("Noodles",manager.getPassword());
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

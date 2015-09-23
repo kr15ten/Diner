@@ -19,8 +19,8 @@ import java.util.List;
 /**
  * Created by Michael on 13/09/2015.
  */
-@SpringApplicationConfiguration(classes = App.class)
-@WebAppConfiguration
+//@SpringApplicationConfiguration(classes = App.class)
+//@WebAppConfiguration
 public class TestOrderRepository extends AbstractTestNGSpringContextTests {
 
     int id;
@@ -41,7 +41,7 @@ public class TestOrderRepository extends AbstractTestNGSpringContextTests {
     List<Order> orders = new ArrayList<Order>();
 
 
-    @Test
+    ////@Test
     public void create() throws Exception
     {
         menuItemId = 305;

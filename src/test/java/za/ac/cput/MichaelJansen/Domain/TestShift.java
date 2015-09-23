@@ -20,7 +20,7 @@ public class TestShift
     Time endTime;
     String empId;
 
-    @Before
+    //@Before
     public void setUp() throws Exception{
         date = new Date(2015,11,11);
         startTime = new Time(8,30,00);
@@ -29,13 +29,13 @@ public class TestShift
         shift = new Shift.Builder(date,startTime,endTime,empId).build();
     }
 
-    @Test
+    //@Test
     public void testShiftCreation() throws Exception{
         Assert.assertNotNull(shift);
         Assert.assertEquals(startTime,shift.getStartTime());
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception{
 
     }

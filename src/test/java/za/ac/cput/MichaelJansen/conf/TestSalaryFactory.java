@@ -16,7 +16,7 @@ public class TestSalaryFactory {
 
     Salary salary;
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         basicSalary = (float)1500.00;
@@ -24,7 +24,7 @@ public class TestSalaryFactory {
         tips = (float) 300.00;
     }
 
-    @Test
+    //@Test
     public void createSalary() throws Exception
     {
         salary = SalaryFactory.createSalary(basicSalary,deductions,tips);
@@ -33,7 +33,7 @@ public class TestSalaryFactory {
     }
 
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

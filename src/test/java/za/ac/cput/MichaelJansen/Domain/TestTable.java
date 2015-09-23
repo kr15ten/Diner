@@ -36,7 +36,7 @@ public class TestTable
 
 
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         menuItemId = 305;
@@ -59,7 +59,7 @@ public class TestTable
         available = true;
     }
 
-    @Test
+    //@Test
     public void testTableCreation() throws Exception
     {
         table = new Table.Builder(seats,orders,available).build();
@@ -69,7 +69,7 @@ public class TestTable
     }
 
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

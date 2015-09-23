@@ -26,7 +26,7 @@ public class TestWaiterFactory {
     private Salary salary;
     private float tip;
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         name = "Craeton";
@@ -36,7 +36,7 @@ public class TestWaiterFactory {
         tip = 1500.00f;
     }
 
-    @Test
+    //@Test
     public void testWaiterCreation() throws Exception
     {
         waiter = WaiterFactory.createWaiter(name,surname,salary,tip);
@@ -44,7 +44,7 @@ public class TestWaiterFactory {
         Assert.assertEquals(1500.00f,waiter.getTip(),0.001);
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

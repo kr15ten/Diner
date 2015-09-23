@@ -24,7 +24,7 @@ public class TestChefFactory {
     private Salary salary;
     private String speciality = "Noodles";
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         name = "Craeton";
@@ -33,7 +33,7 @@ public class TestChefFactory {
         speciality = "Noodles";
     }
 
-    @Test
+    //@Test
     public void testChefCreation() throws Exception
     {
         chef = ChefFactory.createChef(name,surname,salary,speciality);
@@ -41,7 +41,7 @@ public class TestChefFactory {
         Assert.assertEquals("Noodles",chef.getSpeciality());
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

@@ -19,7 +19,7 @@ public class TestMenuItem {
     private float price;
     private String extras;
 
-    @Before
+    //@Before
     public void setUp() throws Exception {
         id = 305;
         itemName = "Harold's hot sauce hamburger";
@@ -29,7 +29,7 @@ public class TestMenuItem {
         extras = "Mayonaisse";
     }
 
-    @Test
+    //@Test
     public void testMenuItemCreation()
     {
         menuItem = new MenuItem.Builder(id,itemName,type,description,price).extras(extras).build();
@@ -37,7 +37,7 @@ public class TestMenuItem {
         Assert.assertEquals(id,305);
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception{
 
     }

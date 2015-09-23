@@ -23,8 +23,8 @@ import java.util.List;
  * Created by Michael on 15/09/2015.
  */
 
-@SpringApplicationConfiguration(classes = App.class)
-@WebAppConfiguration
+//@SpringApplicationConfiguration(classes = App.class)
+//@WebAppConfiguration
 public class TestOrderService extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -59,7 +59,7 @@ public class TestOrderService extends AbstractTestNGSpringContextTests {
 
     List<MenuItem> menuItems = new ArrayList<MenuItem>();
 
-    @Test
+    //@Test
     public void create() throws Exception
     {
         menuItemId = 305;
@@ -92,13 +92,13 @@ public class TestOrderService extends AbstractTestNGSpringContextTests {
         Assert.assertNotNull(order.getOrderId());
     }
 
-    @Test(dependsOnMethods = "create")
+    //@Test(dependsOnMethods = "create")
     public void testGetOrders() throws Exception {
         orders = service.getOrders();
         Assert.assertEquals(1, orders.size());
     }
 
-    @Test(dependsOnMethods = "create")
+    //@Test(dependsOnMethods = "create")
     public void testGetOrder() throws Exception {
 
         order = service.getOrder(order.getOrderId());
@@ -106,14 +106,14 @@ public class TestOrderService extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(extras,order.getExtra());
     }
 
-    @Test(dependsOnMethods = "create")
+    //@Test(dependsOnMethods = "create")
     public void testGetOrderedItems() throws Exception{
          menuItems = service.getOrderedMenuItems(order.getOrderId());
 
         Assert.assertEquals(1,menuItems.size());
     }
 
-    @AfterClass
+    //@AfterClass
     public void cleanUp() throws Exception
     {
         repository.deleteAll();

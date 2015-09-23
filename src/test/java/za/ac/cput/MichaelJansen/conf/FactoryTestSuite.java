@@ -5,7 +5,7 @@ package za.ac.cput.MichaelJansen.conf;
  */
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-@RunWith(Suite.class)
+/*@RunWith(Suite.class)
 @Suite.SuiteClasses({
         TestChefFactory.class,
         TestManagerFactory.class,
@@ -17,6 +17,6 @@ import org.junit.runners.Suite;
         TestShiftFactory.class,
         TestTableFactory.class,
         TestWaiterFactory.class
-})
+})*/
 public class FactoryTestSuite {
 }

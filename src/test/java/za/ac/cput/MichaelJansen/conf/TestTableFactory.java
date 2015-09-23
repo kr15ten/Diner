@@ -34,7 +34,7 @@ public class TestTableFactory {
 
 
 
-    @Before
+    //@Before
     public void setUp() throws Exception
     {
         menuItemId = 305;
@@ -58,7 +58,7 @@ public class TestTableFactory {
         available = true;
     }
 
-    @Test
+    //@Test
     public void testTableCreation() throws Exception
     {
         table = TableFactory.createTable(seats,orders,available);
@@ -68,7 +68,7 @@ public class TestTableFactory {
     }
 
 
-    @After
+    //@After
     public void tearDown() throws Exception
     {
         //super.tearDown();

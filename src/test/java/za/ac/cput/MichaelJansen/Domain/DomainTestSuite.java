@@ -5,7 +5,7 @@ package za.ac.cput.MichaelJansen.Domain;
  */
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-@RunWith(Suite.class)
+/*@RunWith(Suite.class)
 @Suite.SuiteClasses({
         TestChef.class,
         TestManager.class,
@@ -17,6 +17,6 @@ import org.junit.runners.Suite;
         TestShift.class,
         TestTable.class,
         TestWaiter.class
-})
+})*/
 public class DomainTestSuite {
 }
