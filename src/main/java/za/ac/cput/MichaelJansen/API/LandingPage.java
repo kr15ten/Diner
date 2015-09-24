@@ -18,7 +18,7 @@ public class LandingPage {
 
         MenuItem menuItem = new MenuItem.Builder(305, "Harold's hot sauce hamburger",
                 "Burgers", "devilishly hot sauce for burgers that will set fire to many a mouth",
-                30.00f).extras("Mayonaisse").build();
+                30.00f).extras("Mayo").build();
 
         return menuItem;
     }
